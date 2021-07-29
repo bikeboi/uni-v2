@@ -1,5 +1,16 @@
-pragma solidity >=0.5.0;
+// contracts/interfaces/IUniswapV2ERC20.sol
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.0;
 
+import "@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol";
+
+/// @notice Provides ERC20 interface with meta-transaction functionality enabled by the `permit` function.
+/// See EIP-2612: https://eips.ethereum.org/EIPS/eip-2612
+interface IUniswapV2ERC20 is IERC20Permit {
+
+}
+
+/* DEPRECATED CODE
 interface IUniswapV2ERC20 {
     event Approval(address indexed owner, address indexed spender, uint value);
     event Transfer(address indexed from, address indexed to, uint value);
@@ -21,3 +32,4 @@ interface IUniswapV2ERC20 {
 
     function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external;
 }
+*/
