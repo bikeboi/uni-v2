@@ -1,7 +1,22 @@
-pragma solidity =0.5.16;
+// contracts/UniswapV2ERC20.sol
+// SPDX-License-Identifier: GPL-3.0-only
+pragma solidity ^0.8.0;
 
-import './interfaces/IUniswapV2ERC20.sol';
-import './libraries/SafeMath.sol';
+import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "./libraries/SafeMath.sol";
+
+/// @notice Uniswap V2 ERC20 token (UNI-V2)
+contract UniswapV2ERC20 is ERC20Permit {
+    constructor() ERC20("Uniswap V2", "UNI-V2") ERC20Permit("Uniswap V2") {}
+}
+
+/* DEPRECATED CODE
+// This contract is basically an ERC20 token with meta-transactions enabled
+// via the `permit` function. The OpenZeppelin implementation for `permit`
+// is favored over the one shown below.
+
+import "./interfaces/IUniswapV2ERC20.sol";
 
 contract UniswapV2ERC20 is IUniswapV2ERC20 {
     using SafeMath for uint;
@@ -21,7 +36,7 @@ contract UniswapV2ERC20 is IUniswapV2ERC20 {
     event Approval(address indexed owner, address indexed spender, uint value);
     event Transfer(address indexed from, address indexed to, uint value);
 
-    constructor() public {
+    constructor() {
         uint chainId;
         assembly {
             chainId := chainid
@@ -92,3 +107,4 @@ contract UniswapV2ERC20 is IUniswapV2ERC20 {
         _approve(owner, spender, value);
     }
 }
+*/
